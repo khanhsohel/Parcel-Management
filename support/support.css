@@ -1,0 +1,9 @@
+/* Support specific styles */
+.support-item {
+  transition: transform var(--transition-speed) ease;
+}
+
+.support-item:hover {
+  transform: translateX(5px);
+  border-color: rgba(59, 130, 246, 0.2);
+}

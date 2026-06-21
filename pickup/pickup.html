@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMS - Schedule Package Pickup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <div id="header-placeholder"></div>
+      <div class="view-wrapper">
+
+        <section id="view-pickup" class="content-view active">
+          <div class="standard-card max-width-small">
+            <h2>Schedule Customer Pickup</h2>
+            <p class="section-desc">Locate a package booking by ID and schedule the date & time details.</p>
+
+            <form id="form-pickup-search" class="search-form-row">
+              <input type="text" id="pickup-search-booking-id" placeholder="Enter Booking ID (12 digits)" required minlength="12" maxlength="12">
+              <button type="submit" class="btn btn-primary">Find</button>
+            </form>
+
+            <div id="pickup-details-box" class="pickup-details-container" style="display: none;">
+              <hr class="section-divider">
+              
+              <div class="parcel-preview-block" style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 16px 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+                <p><strong>Customer ID:</strong> <span id="pickup-preview-cust">N/A</span></p>
+                <p><strong>Sender:</strong> <span id="pickup-preview-sender">N/A</span></p>
+                <p><strong>Receiver:</strong> <span id="pickup-preview-rec">N/A</span></p>
+              </div>
+
+              <form id="form-pickup-save">
+                <div class="form-group">
+                  <label for="pickup-datetime">Scheduled Pickup Date & Time</label>
+                  <input type="datetime-local" id="pickup-datetime" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="dropoff-datetime">Estimated Drop-off Date & Time</label>
+                  <input type="datetime-local" id="dropoff-datetime" required>
+                </div>
+
+                <button type="submit" id="btn-pickup-save" class="btn btn-primary btn-block">
+                  Save Schedule Details
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../common.js"></script>
+  <script src="pickup.js"></script>
+</body>
+</html>

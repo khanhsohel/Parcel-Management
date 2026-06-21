@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMS - Customer Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="support.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <div id="header-placeholder"></div>
+      <div class="view-wrapper">
+
+        <section id="view-support" class="content-view active">
+          <div class="standard-card max-width-small">
+            <h2>Customer Support</h2>
+            <p class="section-desc">For queries or complaints, please reach out via any of the details below.</p>
+
+            <div class="support-contacts">
+              <div class="support-item">
+                <div class="support-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="support-content">
+                  <strong>Contact Number</strong>
+                  <span id="support-phone">+1 (800) 555-0199</span>
+                </div>
+              </div>
+
+              <div class="support-item">
+                <div class="support-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="support-content">
+                  <strong>Email Address</strong>
+                  <span id="support-email">support@parcelmanagement.com</span>
+                </div>
+              </div>
+
+              <div class="support-item">
+                <div class="support-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="support-content">
+                  <strong>Corporate Headquarters</strong>
+                  <span id="support-address">100 Logistics Blvd, Suite 400, Chicago, IL 60601</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../common.js"></script>
+  <script src="support.js"></script>
+</body>
+</html>

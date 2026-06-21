@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMS - Track Shipment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="tracking.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <div id="header-placeholder"></div>
+      <div class="view-wrapper">
+
+        <section id="view-tracking" class="content-view active">
+          <div class="standard-card">
+            <h2>Track Parcel Shipment</h2>
+            <p class="section-desc">Enter your 12-digit parcel tracking identifier to get live updates.</p>
+
+            <form id="form-tracking-search" class="search-form-row">
+              <div class="input-icon-wrapper flex-grow">
+                <i class="fa-solid fa-magnifying-glass input-icon"></i>
+                <input type="text" id="track-booking-id" placeholder="Enter 12-digit Booking ID" minlength="12" maxlength="12" required pattern="[0-9]{12}">
+              </div>
+              <button type="submit" id="btn-tracking-search" class="btn btn-primary">Search</button>
+            </form>
+
+            <div id="tracking-result-box" class="tracking-result-container" style="display: none;">
+              <div class="tracking-summary-panel">
+                <div class="summary-item">
+                  <span class="label">Status:</span>
+                  <span class="value badge" id="track-result-status">In Transit</span>
+                </div>
+                <div class="summary-item">
+                  <span class="label">Booking ID:</span>
+                  <span class="value font-mono" id="track-result-id">N/A</span>
+                </div>
+                <div class="summary-item">
+                  <span class="label">Route:</span>
+                  <span class="value" id="track-result-route">N/A</span>
+                </div>
+              </div>
+
+              <div class="tracking-timeline">
+                <div class="timeline-step" id="step-booked">
+                  <div class="step-icon"><i class="fa-solid fa-receipt"></i></div>
+                  <div class="step-label">Booked</div>
+                </div>
+                <div class="timeline-step" id="step-picked-up">
+                  <div class="step-icon"><i class="fa-solid fa-box-open"></i></div>
+                  <div class="step-label">Picked Up</div>
+                </div>
+                <div class="timeline-step" id="step-in-transit">
+                  <div class="step-icon"><i class="fa-solid fa-truck"></i></div>
+                  <div class="step-label">In Transit</div>
+                </div>
+                <div class="timeline-step" id="step-delivered">
+                  <div class="step-icon"><i class="fa-solid fa-house-chimney-check"></i></div>
+                  <div class="step-label">Delivered</div>
+                </div>
+              </div>
+
+              <div class="parcel-info-grid">
+                <div class="info-card">
+                  <h4>Shipment Info</h4>
+                  <p><strong>Contents:</strong> <span id="track-result-contents">N/A</span></p>
+                  <p><strong>Weight:</strong> <span id="track-result-weight">N/A</span>g</p>
+                  <p><strong>Type:</strong> <span id="track-result-type">N/A</span></p>
+                </div>
+                <div class="info-card">
+                  <h4>Schedules</h4>
+                  <p><strong>Pickup:</strong> <span id="track-result-pickup">Not Scheduled</span></p>
+                  <p><strong>Dropoff:</strong> <span id="track-result-dropoff">Not Scheduled</span></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="officer-tracking-section" class="officer-only-block" style="display: none;">
+              <hr class="section-divider">
+              <h3>All Packages List</h3>
+              <p class="section-desc">Below are all system bookings, sorted latest first.</p>
+
+              <div class="filter-search-box">
+                <div class="form-grid-3">
+                  <div class="form-group">
+                    <label for="off-track-search-customer">Customer ID</label>
+                    <input type="text" id="off-track-search-customer" placeholder="Search Customer ID">
+                  </div>
+                  <div class="form-group">
+                    <label for="off-track-search-booking">Booking ID</label>
+                    <input type="text" id="off-track-search-booking" placeholder="Search 12-digit Booking ID">
+                  </div>
+                  <div class="form-group flex-end">
+                    <button id="btn-off-track-filter" class="btn btn-primary btn-block">Filter List</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="table-container">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Booking ID</th>
+                      <th>Customer ID</th>
+                      <th>Receiver Name</th>
+                      <th>Delivery Option</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-body-officer-tracking">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../common.js"></script>
+  <script src="tracking.js"></script>
+</body>
+</html>

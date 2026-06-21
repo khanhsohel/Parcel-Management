@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMS - Booking History</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <div id="header-placeholder"></div>
+      <div class="view-wrapper">
+
+        <section id="view-customer-history" class="content-view">
+          <div class="standard-card">
+            <h2>Your Booking History</h2>
+            <p class="section-desc">Manage, view, and inspect all your previous bookings.</p>
+
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer ID</th>
+                    <th>Booking ID</th>
+                    <th>Booking Date</th>
+                    <th>Receiver Name</th>
+                    <th>Delivered Address</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body-customer-history">
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pagination-row">
+              <button id="btn-cust-hist-prev" class="btn btn-secondary btn-small"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <span class="pagination-info" id="cust-hist-page-info">Page 1 of 1</span>
+              <button id="btn-cust-hist-next" class="btn btn-secondary btn-small">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-officer-history" class="content-view">
+          <div class="standard-card">
+            <h2>Master Booking History</h2>
+            <p class="section-desc">Filter and inspect booking records across the system.</p>
+
+            <div class="filter-search-box">
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="off-hist-search-customer">Customer ID</label>
+                  <input type="text" id="off-hist-search-customer" placeholder="Search Customer ID">
+                </div>
+                <div class="form-group">
+                  <label for="off-hist-date-start">Date Range Start</label>
+                  <input type="date" id="off-hist-date-start">
+                </div>
+                <div class="form-group">
+                  <label for="off-hist-date-end">Date Range End</label>
+                  <input type="date" id="off-hist-date-end">
+                </div>
+              </div>
+              <div class="form-actions-row margin-top-small">
+                <button id="btn-off-hist-reset" class="btn btn-secondary">Clear Filters</button>
+                <button id="btn-off-hist-search" class="btn btn-primary">Apply Filters</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer ID</th>
+                    <th>Booking ID</th>
+                    <th>Booking Date</th>
+                    <th>Receiver Name</th>
+                    <th>Delivered Address</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body-officer-history">
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pagination-row">
+              <button id="btn-off-hist-prev" class="btn btn-secondary btn-small"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <span class="pagination-info" id="off-hist-page-info">Page 1 of 1</span>
+              <button id="btn-off-hist-next" class="btn btn-secondary btn-small">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../common.js"></script>
+  <script src="history.js"></script>
+</body>
+</html>

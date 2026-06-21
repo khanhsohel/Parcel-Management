@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMS - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <div id="header-placeholder"></div>
+      <div class="view-wrapper">
+
+        <section id="view-customer-home" class="content-view">
+          <div class="dashboard-header-panel">
+            <h2>Welcome to Customer Portal</h2>
+            <p>Select an option from the left sidebar or click below to perform an action.</p>
+          </div>
+
+          <div class="cards-grid">
+            <div class="dashboard-card" id="card-cust-book">
+              <div class="card-icon"><i class="fa-solid fa-paper-plane"></i></div>
+              <h3>Book a Service</h3>
+              <p>Send parcels anywhere instantly. Choose sizing, packaging, and delivery options.</p>
+              <button class="btn btn-outline">New Booking</button>
+            </div>
+            <div class="dashboard-card" id="card-cust-track">
+              <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+              <h3>Track Package</h3>
+              <p>Enter your 12-digit Booking ID to view real-time shipping updates.</p>
+              <button class="btn btn-outline">Track Now</button>
+            </div>
+            <div class="dashboard-card" id="card-cust-history">
+              <div class="card-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+              <h3>Previous Bookings</h3>
+              <p>View your past bookings, invoices, and shipment histories.</p>
+              <button class="btn btn-outline">View History</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-officer-home" class="content-view">
+          <div class="dashboard-header-panel officer-panel">
+            <h2>Officer Administrative Dashboard</h2>
+            <p>Manage bookings, schedule customer pickups, and update delivery statuses.</p>
+          </div>
+
+          <div class="cards-grid">
+            <div class="dashboard-card" id="card-off-book">
+              <div class="card-icon"><i class="fa-solid fa-file-invoice"></i></div>
+              <h3>Book for Customer</h3>
+              <p>Place a new booking for a customer. Enter sender and receiver details.</p>
+              <button class="btn btn-primary">Book Parcel</button>
+            </div>
+            <div class="dashboard-card" id="card-off-pickup">
+              <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+              <h3>Pickup Scheduling</h3>
+              <p>Schedule pickup dates and times for customer bookings.</p>
+              <button class="btn btn-primary">Schedule Pickup</button>
+            </div>
+            <div class="dashboard-card" id="card-off-delivery">
+              <div class="card-icon"><i class="fa-solid fa-truck-arrow-right"></i></div>
+              <h3>Delivery Updates</h3>
+              <p>Update shipment statuses: Picked up, In Transit, Delivered, Returned.</p>
+              <button class="btn btn-primary">Update Status</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../common.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

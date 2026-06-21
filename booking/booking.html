@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMS - Book Shipment Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <div id="header-placeholder"></div>
+      <div class="view-wrapper">
+
+        <section id="view-booking" class="content-view active">
+          <div class="standard-card">
+            <h2>Book a Shipment Service</h2>
+            <p class="section-desc">Provide sender, receiver, and parcel package details below.</p>
+
+            <form id="form-booking">
+              <div class="form-grid">
+                
+                <div class="form-section">
+                  <h3>1. Sender Information</h3>
+                  
+                  <div class="form-group">
+                    <label for="book-sender-name">Sender Name</label>
+                    <input type="text" id="book-sender-name" placeholder="Sender Name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-sender-address">Sender Address</label>
+                    <textarea id="book-sender-address" placeholder="Sender Mailing Address" rows="2" required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-sender-contact">Sender Contact Details</label>
+                    <input type="text" id="book-sender-contact" placeholder="Sender Contact Number" required>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>2. Receiver Information</h3>
+                  
+                  <div class="form-group">
+                    <label for="book-receiver-name">Receiver Name</label>
+                    <input type="text" id="book-receiver-name" placeholder="Receiver Full Name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-receiver-address">Receiver Address</label>
+                    <textarea id="book-receiver-address" placeholder="Receiver Delivery Address" rows="2" required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-receiver-pin">Receiver Pin Code</label>
+                    <input type="text" id="book-receiver-pin" placeholder="ZIP / Pin Code" pattern="[0-9]{5,10}" title="Pin code should be 5 to 10 digits" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-receiver-contact">Receiver Contact Details</label>
+                    <input type="text" id="book-receiver-contact" placeholder="Receiver Contact Number" required>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>3. Parcel Details & Services</h3>
+                  
+                  <div class="form-group">
+                    <label for="book-parcel-weight">Weight (grams)</label>
+                    <input type="number" id="book-parcel-weight" placeholder="Weight in grams" min="1" max="50000" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-parcel-size">Size Class</label>
+                    <select id="book-parcel-size" required>
+                      <option value="small" selected>Small (Envelopes, Documents) - Base $5.00</option>
+                      <option value="medium">Medium (Shoebox size) - Base $10.00</option>
+                      <option value="large">Large (Box package) - Base $20.00</option>
+                      <option value="extra-large">Extra Large (Heavy parcel) - Base $40.00</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-parcel-desc">Contents Description</label>
+                    <input type="text" id="book-parcel-desc" placeholder="e.g. Books, Clothes, Electronics" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Additional Services</label>
+                    <div class="checkbox-group">
+                      <label class="checkbox-label">
+                        <input type="checkbox" id="book-service-insurance"> Insurance Protection (+$5.00)
+                      </label>
+                      <label class="checkbox-label">
+                        <input type="checkbox" id="book-service-tracking" checked> Premium SMS tracking (+$2.00)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>4. Delivery Speed & Packing</h3>
+                  
+                  <div class="form-group">
+                    <label for="book-shipping-speed">Delivery Speed</label>
+                    <select id="book-shipping-speed" required>
+                      <option value="standard" selected>Standard Shipping (+$0.00)</option>
+                      <option value="express">Express Delivery (+$10.00)</option>
+                      <option value="next-day">Next-Day Air Shipping (+$20.00)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-shipping-pack">Packaging Preference</label>
+                    <select id="book-shipping-pack" required>
+                      <option value="standard" selected>Standard Packaging ($0.00)</option>
+                      <option value="custom">Custom Packaging (+$5.00)</option>
+                      <option value="eco">Eco-friendly Packaging (+$3.00)</option>
+                      <option value="fragile">Fragile Item Handling (+$8.00)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="book-pickup-time">Preferred Pickup / Drop-off Time</label>
+                    <input type="datetime-local" id="book-pickup-time" required>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="booking-summary-row">
+                <div class="cost-estimate-box">
+                  <span class="cost-label">Estimated Service Cost:</span>
+                  <span class="cost-value" id="book-calculated-cost">$5.00</span>
+                </div>
+                <button type="submit" id="btn-booking-submit" class="btn btn-primary btn-large">
+                  <i class="fa-solid fa-credit-card"></i> Proceed to Payment
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="view-payment" class="content-view">
+          <div class="standard-card max-width-small">
+            <h2>Payment Bill Summary</h2>
+            <p class="section-desc">Review your shipment bill and choose a payment method.</p>
+
+            <div class="payment-bill-box">
+              <div class="bill-row total-row">
+                <span>Total Amount Due:</span>
+                <span id="payment-bill-amount">$0.00</span>
+              </div>
+            </div>
+
+            <form id="form-payment-mode">
+              <div class="form-group">
+                <label>Mode of Payment</label>
+                <div class="radio-card-group">
+                  <label class="radio-card">
+                    <input type="radio" name="payment-mode" value="credit" checked>
+                    <div class="radio-card-content">
+                      <i class="fa-solid fa-credit-card"></i>
+                      <span>Credit Card / Debit Card</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-actions-row margin-top-large">
+                <button type="button" id="btn-payment-back" class="btn btn-secondary">
+                  <i class="fa-solid fa-arrow-left"></i> Back to Booking
+                </button>
+                <button type="submit" id="btn-payment-paynow" class="btn btn-primary">
+                  Pay Now <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="view-card-details" class="content-view">
+          <div class="standard-card max-width-small" style="position: relative;">
+            <h2>Enter Card Details</h2>
+            <p class="section-desc">Provide your credentials below to process transaction.</p>
+
+            <div class="card-display-mock">
+              <div class="card-chip"></div>
+              <div class="card-brand-label">Credit Card</div>
+              <div class="card-number-display" id="card-preview-number">•••• •••• •••• ••••</div>
+              <div class="card-details-display">
+                <div class="card-holder-display">
+                  <div class="label">CARD HOLDER</div>
+                  <div id="card-preview-holder">NAME SURNAME</div>
+                </div>
+                <div class="card-expiry-display">
+                  <div class="label">EXPIRES</div>
+                  <div id="card-preview-expiry">MM/YY</div>
+                </div>
+              </div>
+            </div>
+
+            <div id="payment-loader-overlay" class="loader-overlay" style="display: none;">
+              <div class="spinner"></div>
+              <p>Processing Payment... Please do not refresh the page.</p>
+            </div>
+
+            <form id="form-card-details">
+              <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="16 Digits Number" maxlength="19" required pattern="[0-9\s]{16,19}">
+              </div>
+
+              <div class="form-group">
+                <label for="card-holder">Card Holder Name</label>
+                <input type="text" id="card-holder" placeholder="Name on Card" required>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="card-expiry">Expiry Date</label>
+                  <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required pattern="(0[1-9]|1[0-2])\/[0-9]{2}" title="Must be in MM/YY format">
+                </div>
+                <div class="form-group">
+                  <label for="card-cvv">CVV</label>
+                  <input type="password" id="card-cvv" placeholder="3 digits" maxlength="3" required pattern="[0-9]{3}">
+                </div>
+              </div>
+
+              <div class="form-actions-row margin-top-large">
+                <button type="button" id="btn-card-back" class="btn btn-secondary">Cancel</button>
+                <button type="submit" id="btn-card-submit" class="btn btn-primary">Make Payment</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="view-invoice" class="content-view">
+          <div class="invoice-container">
+            <div class="invoice-header">
+              <div class="invoice-logo">
+                <i class="fa-solid fa-box-open"></i>
+                <span>PMS Invoice</span>
+              </div>
+              <div class="invoice-meta">
+                <h2>INVOICE</h2>
+                <p><strong>Booking ID:</strong> <span id="inv-booking-id">N/A</span></p>
+                <p><strong>Payment Time:</strong> <span id="inv-payment-time">N/A</span></p>
+              </div>
+            </div>
+
+            <hr class="invoice-divider">
+
+            <div class="invoice-details-grid">
+              <div>
+                <h4>Receiver Information</h4>
+                <p><strong>Name:</strong> <span id="inv-rec-name">N/A</span></p>
+                <p><strong>Address:</strong> <span id="inv-rec-address">N/A</span></p>
+                <p><strong>PIN / ZIP:</strong> <span id="inv-rec-pin">N/A</span></p>
+                <p><strong>Mobile:</strong> <span id="inv-rec-mobile">N/A</span></p>
+              </div>
+              <div>
+                <h4>Parcel Specifications</h4>
+                <p><strong>Weight:</strong> <span id="inv-weight">N/A</span>g</p>
+                <p><strong>Contents:</strong> <span id="inv-contents">N/A</span></p>
+                <p><strong>Shipping Speed:</strong> <span id="inv-shipping-speed">N/A</span></p>
+                <p><strong>Packing Option:</strong> <span id="inv-packing-pref">N/A</span></p>
+              </div>
+            </div>
+
+            <hr class="invoice-divider">
+
+            <div class="invoice-times-box">
+              <div class="time-item">
+                <i class="fa-solid fa-truck-pickup"></i>
+                <div>
+                  <strong>Pickup Schedule:</strong>
+                  <span id="inv-pickup-time">Not Scheduled Yet</span>
+                </div>
+              </div>
+              <div class="time-item">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+                <div>
+                  <strong>Dropoff Schedule:</strong>
+                  <span id="inv-dropoff-time">Not Scheduled Yet</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="invoice-total-box">
+              <span class="total-label">Total Amount Paid:</span>
+              <span class="total-amount" id="inv-service-cost">$0.00</span>
+            </div>
+
+            <div class="invoice-actions no-print">
+              <button id="btn-invoice-print" class="btn btn-secondary">
+                <i class="fa-solid fa-print"></i> Print Invoice
+              </button>
+              <button id="btn-invoice-home" class="btn btn-primary">
+                Return Home
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../common.js"></script>
+  <script src="booking.js"></script>
+</body>
+</html>

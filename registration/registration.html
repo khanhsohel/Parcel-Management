@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMS - Customer Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <div class="view-wrapper">
+
+        <section id="view-register" class="content-view active">
+          <div class="auth-card auth-card-large">
+            <h2>Customer Registration</h2>
+            <p class="auth-subtitle">Create a self-registered customer account</p>
+
+            <form id="form-register">
+              <div class="form-grid">
+                
+                <div class="form-section">
+                  <h3>Personal Information</h3>
+                  
+                  <div class="form-group">
+                    <label for="reg-name">Customer Name</label>
+                    <input type="text" id="reg-name" placeholder="Full Name (Max 50 characters)" maxlength="50" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" placeholder="example@email.com" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reg-mobile">Mobile Number</label>
+                    <div class="mobile-input-group">
+                      <select id="reg-country-code" required>
+                        <option value="+91" selected>+91 (IN)</option>
+                        <option value="+1">+1 (US)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+61">+61 (AU)</option>
+                        <option value="+971">+971 (AE)</option>
+                      </select>
+                      <input type="text" id="reg-mobile" placeholder="10-digit number" pattern="[0-9]{10}" title="Must be a 10 digit number" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reg-address">Complete Address</label>
+                    <textarea id="reg-address" placeholder="Street Address, ZIP/PIN code, and Parcel code" rows="3" required></textarea>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>Account Credentials & Preferences</h3>
+
+                  <div class="form-group">
+                    <label for="reg-userid">User ID</label>
+                    <input type="text" id="reg-userid" placeholder="Choose User ID (5-20 characters)" minlength="5" maxlength="20" required autocomplete="username">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" placeholder="Password (Max 30 characters)" maxlength="30" required autocomplete="new-password">
+                    <span class="input-help">Min 1 uppercase, 1 lowercase, 1 special char. Max 30 chars.</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reg-confirm-password">Confirm Password</label>
+                    <input type="password" id="reg-confirm-password" placeholder="Re-enter Password" maxlength="30" required autocomplete="new-password">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reg-preferences">Delivery Preferences</label>
+                    <textarea id="reg-preferences" placeholder="Notifications, mail delivery instructions, or other preferences..." rows="2"></textarea>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-actions-row">
+                <button type="reset" id="btn-register-reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" id="btn-register-submit" class="btn btn-primary">Register</button>
+              </div>
+            </form>
+            
+            <div class="auth-footer" style="margin-top: 20px; text-align: center; font-size: 0.9rem;">
+              <p style="color: var(--text-muted);">Already have an account? <a href="../login/login.html" id="btn-reg-goto-login" style="color: var(--color-primary); text-decoration: none; font-weight: 500;">Log In</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-register-success" class="content-view">
+          <div class="success-card">
+            <div class="success-icon-wrapper">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 class="text-success">Consumer Registration successful.</h2>
+            <p class="success-subtitle">Please note down your registration details to log in.</p>
+            
+            <div class="ack-details-box">
+              <div class="ack-row">
+                <span class="ack-label">Generated Username / User ID:</span>
+                <span class="ack-value highlight" id="ack-username">N/A</span>
+              </div>
+              <div class="ack-row">
+                <span class="ack-label">Customer Name:</span>
+                <span class="ack-value" id="ack-name">N/A</span>
+              </div>
+              <div class="ack-row">
+                <span class="ack-label">Email:</span>
+                <span class="ack-value" id="ack-email">N/A</span>
+              </div>
+            </div>
+
+            <button id="btn-ack-login" class="btn btn-primary">Proceed to Login</button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../common.js"></script>
+  <script src="registration.js"></script>
+</body>
+</html>

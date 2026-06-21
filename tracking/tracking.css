@@ -1,0 +1,128 @@
+/* Tracking Page Styles */
+.tracking-timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 40px 0 50px 0;
+  padding: 0 40px;
+}
+
+.tracking-timeline::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 80px;
+  right: 80px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.06);
+  z-index: 1;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+  position: relative;
+  width: 90px;
+}
+
+.step-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--bg-input);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.step-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  transition: all var(--transition-speed) ease;
+}
+
+.timeline-step.done .step-icon {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: var(--color-success);
+  color: var(--color-success);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.timeline-step.done .step-label {
+  color: var(--color-success);
+}
+
+.timeline-step.active .step-icon {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.timeline-step.active .step-label {
+  color: var(--color-primary);
+}
+
+.parcel-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.info-card {
+  background-color: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+
+.info-card h4 {
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.info-card p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.info-card p strong {
+  color: var(--text-muted);
+  font-weight: 500;
+  display: inline-block;
+  width: 110px;
+}
+
+@media (max-width: 576px) {
+  .tracking-timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 0 10px;
+  }
+  .tracking-timeline::before {
+    display: none;
+  }
+  .timeline-step {
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+  }
+  .parcel-info-grid {
+    grid-template-columns: 1fr;
+  }
+}

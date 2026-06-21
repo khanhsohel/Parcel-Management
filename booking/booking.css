@@ -1,0 +1,135 @@
+/* Booking specific visual overrides */
+.max-width-small {
+  margin-top: 40px;
+}
+
+.loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 15, 25, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: var(--border-radius);
+  z-index: 10;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(59, 130, 246, 0.1);
+  border-left-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.card-display-mock {
+  height: 200px;
+  background: linear-gradient(135deg, #1d4ed8, #1e1b4b);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 30px;
+}
+
+.card-display-mock::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.card-chip {
+  width: 40px;
+  height: 30px;
+  background-color: #f59e0b;
+  border-radius: 4px;
+}
+
+.card-brand-label {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1px;
+}
+
+.card-number-display {
+  font-size: 1.35rem;
+  font-family: monospace;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  color: #ffffff;
+  margin: 20px 0;
+}
+
+.card-details-display {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-details-display .label {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.card-details-display div {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .app-layout {
+    display: block !important;
+  }
+  .sidebar, .top-header, .no-print, .toast-container, .pagination-row {
+    display: none !important;
+  }
+  .main-content {
+    background: #ffffff !important;
+  }
+  .view-wrapper {
+    padding: 0 !important;
+  }
+  .content-view {
+    display: none !important;
+  }
+  .content-view#view-invoice {
+    display: block !important;
+  }
+  .invoice-container {
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}

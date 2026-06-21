@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PMS - Redirecting...</title>
+  <script src="common.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const user = getCurrentUser();
+      if (user) {
+        window.location.href = 'dashboard/dashboard.html';
+      } else {
+        window.location.href = 'login/login.html';
+      }
+    });
+  </script>
+</head>
+<body>
+  <p style="font-family: sans-serif; text-align: center; margin-top: 50px; color: #94a3b8;">Redirecting to Parcel Management System...</p>
+</body>
+</html>
